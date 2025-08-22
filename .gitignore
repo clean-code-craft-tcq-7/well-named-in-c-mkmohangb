@@ -1,1 +1,7 @@
 testchecker
+*.json
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.log
