@@ -33,6 +33,20 @@ void testPrintReferenceManual() {
     char buf[100];
     md_header(buf, 100);
     assert(strcmp(buf, "|Pair Number|Major Color|Minor Color|\n|---|---|---|\n") == 0);
+
+    md_format_row(buf, 100, 1, WHITE, BLUE);
+    assert(strcmp(buf, "|1|White|Blue|\n") == 0);
+    printReferenceManual(md_header, md_format_row);
+}
+
+void testPrintReferenceManualCsv(){
+    char buf[100];
+    csv_header(buf, 100);
+    assert(strcmp(buf, "Pair Number,Major Color,Minor Color\n") == 0);
+
+    csv_format_row(buf, 100, 1, WHITE, BLUE);
+    assert(strcmp(buf, "1,White,Blue\n") == 0);
+    printReferenceManual(csv_header, csv_format_row);
 }
 
 int main() {
@@ -42,6 +56,7 @@ int main() {
     testPairToNumber(BLACK, ORANGE, 12);
     testPairToNumber(VIOLET, SLATE, 25);
 
+    printf("calling print reference manual\n");
     testPrintReferenceManual();
 
     return 0;
